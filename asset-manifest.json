@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/leagueoflegendsapp/static/css/main.1fb79ab9.chunk.css",
+    "main.js": "/leagueoflegendsapp/static/js/main.307f344d.chunk.js",
+    "main.js.map": "/leagueoflegendsapp/static/js/main.307f344d.chunk.js.map",
+    "runtime~main.js": "/leagueoflegendsapp/static/js/runtime~main.e672e6bd.js",
+    "runtime~main.js.map": "/leagueoflegendsapp/static/js/runtime~main.e672e6bd.js.map",
+    "static/js/2.6e282072.chunk.js": "/leagueoflegendsapp/static/js/2.6e282072.chunk.js",
+    "static/js/2.6e282072.chunk.js.map": "/leagueoflegendsapp/static/js/2.6e282072.chunk.js.map",
+    "index.html": "/leagueoflegendsapp/index.html",
+    "precache-manifest.71917c79b4b246f9259e9cde94bca074.js": "/leagueoflegendsapp/precache-manifest.71917c79b4b246f9259e9cde94bca074.js",
+    "service-worker.js": "/leagueoflegendsapp/service-worker.js",
+    "static/css/main.1fb79ab9.chunk.css.map": "/leagueoflegendsapp/static/css/main.1fb79ab9.chunk.css.map",
+    "static/media/style.scss": "/leagueoflegendsapp/static/media/mainpagebg.315b3e4f.jpg"
+  }
+}
