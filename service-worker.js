@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/leagueoflegendsapp/precache-manifest.a1a40038a37145eb5b5f349e5c7d0faf.js"
+  "/leagueoflegendsapp/precache-manifest.8372a979be31605e6fb5fbd70375ac16.js"
 );
 
 self.addEventListener('message', (event) => {
