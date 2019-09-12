@@ -30,11 +30,11 @@ class MainPage extends Component {
                 <h2>Type your summoner name</h2>
               </header>
               <div className="search-form">
-                <input type="text" name="nickname" onChange={this.handleInputs} value={nickname}/>
+                <input type="text" name="nickname" onChange={this.handleInputs} value={nickname} autoComplete="off"/>
                 <select onChange={this.handleInputs} name="region">
                   {this.regions.map(item=><option key={item.value} value={item.value}>{item.name}</option>)}
                 </select>
-                <Link to={nickname ? `/${region}/summoner/${nickname}` : ""} className="button"></Link>
+                <Link to={nickname ? `/${region}/summoner/${nickname}` : ""} className="buttonStart"></Link>
               </div>
             </div>
           </div>

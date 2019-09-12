@@ -4,4 +4,6 @@
 // Customs
 @import './additions/customcss';
 
-@import './partilars/mainpage';
+@import './partilars/MainPage/mainpage';
+@import './partilars/SummonerPage/summonerpage';
+@import './partilars/SummonerPage/components/SummonerInfo';

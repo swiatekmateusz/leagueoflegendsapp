@@ -1,0 +1,76 @@
+.summonerInfo{
+  .banner{
+    position: relative;
+    max-width: 250px;
+    min-width: 250px;
+    margin: 0 auto;
+    img{
+      width: 100%;
+    }
+    .icon,.nickname,.level{
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    .icon{
+      width: 165px;
+      height: 165px;
+      top: 19%;
+      border-radius: 50%;
+      border: 10px solid #956039;
+    }
+    .nickname,.level{
+      display: flex;
+      text-align: center;
+      white-space: nowrap;
+      font-family: 'LOL Medium';
+      color: white;
+      border-radius: 15px;
+      padding: .4rem .8rem;
+      background: radial-gradient(circle, rgba(69,51,86,1) 0%, rgba(29,21,38,1) 100%);
+      border: 7px solid #956039;
+      transition: .3s linear all;
+    }
+    .nickname{
+      top: 59%;
+      min-width: 200px;
+      font-size: 3.5rem;
+      h1{
+        margin: 0 auto;
+        font-size: inherit;
+      }
+    }
+    .level{
+      top: 79%;
+      border-top-width: 2px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      min-width: 150px;
+      font-size: 2.2rem;
+      h2{
+        margin: 0;
+        font-size: inherit;
+      }
+    }
+    .loader{
+      width: 100%;
+      background:linear-gradient(-45deg, #5a426e, #503d5e, #3e2f4b, #1e1825);
+      background-size: 400% 400%;
+      border-radius: 10px;
+      font-size: .8em;
+      animation: loaderAnimation 1s ease infinite ;
+    }
+  }
+}
+
+@keyframes loaderAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

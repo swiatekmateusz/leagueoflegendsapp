@@ -2,7 +2,7 @@
   position: relative;
   height: 100vh;
   .bg-image{
-    background-image: url("../additions/img/mainpagebg.jpg"),;
+    background-image: url("../../additions/img/mainpagebg.jpg"),;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -35,6 +35,7 @@
         }
         h2{
           margin-bottom: 2rem;
+          box-sizing: content-box;
         }
       }
       .search-form{
@@ -44,12 +45,15 @@
         border-radius: .5rem;
         border: 2px solid rgba(0, 31, 255, 0.48);
         background-color: rgba(255, 255, 255, 0.4);
+        & *{
+          box-sizing: content-box;
+        }
         input{
           color: white;
           font-family: 'LOL Medium';
           border: none;
           border-radius: .15rem;
-          padding: 1.2rem 1.6rem;
+          padding: .8rem 1.6rem;
           font-size: 2rem;
           background-color: transparent;
           &:focus{
@@ -71,7 +75,7 @@
             outline: none;
           }
         }
-        .button{
+        .buttonStart{
           width: 100px;
           text-align: center;
           position: relative;
