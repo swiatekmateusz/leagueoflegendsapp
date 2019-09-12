@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ee6bfb9933cab981c5076a25b6f5d875",
+    "revision": "c48fc93f80c9cff95a5ef6b3f5f072fa",
     "url": "/leagueoflegendsapp/index.html"
   },
   {
@@ -8,15 +8,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/leagueoflegendsapp/static/css/2.266e55a5.chunk.css"
   },
   {
-    "revision": "a17f0880c6401609757f",
-    "url": "/leagueoflegendsapp/static/css/main.dccaf455.chunk.css"
+    "revision": "834ca95418793e82667e",
+    "url": "/leagueoflegendsapp/static/css/main.2eb9d1cb.chunk.css"
   },
   {
     "revision": "adad8f5ead00015fd3cb",
     "url": "/leagueoflegendsapp/static/js/2.594a4702.chunk.js"
   },
   {
-    "revision": "a17f0880c6401609757f",
+    "revision": "834ca95418793e82667e",
     "url": "/leagueoflegendsapp/static/js/main.d6286037.chunk.js"
   },
   {
