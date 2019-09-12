@@ -1,23 +1,31 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e817ec52e430c3acb3bc5f972f568438",
+    "revision": "97f3238e68f53d6cd223031666376f53",
     "url": "/leagueoflegendsapp/index.html"
   },
   {
-    "revision": "cdad68f1141786d91be9",
-    "url": "/leagueoflegendsapp/static/css/main.1fb79ab9.chunk.css"
+    "revision": "adad8f5ead00015fd3cb",
+    "url": "/leagueoflegendsapp/static/css/2.266e55a5.chunk.css"
   },
   {
-    "revision": "10ad78dea0ae97f1714c",
-    "url": "/leagueoflegendsapp/static/js/2.6e282072.chunk.js"
+    "revision": "5f36eeb78e143615a4ca",
+    "url": "/leagueoflegendsapp/static/css/main.3e12bb9d.chunk.css"
   },
   {
-    "revision": "cdad68f1141786d91be9",
-    "url": "/leagueoflegendsapp/static/js/main.476aa135.chunk.js"
+    "revision": "adad8f5ead00015fd3cb",
+    "url": "/leagueoflegendsapp/static/js/2.594a4702.chunk.js"
+  },
+  {
+    "revision": "5f36eeb78e143615a4ca",
+    "url": "/leagueoflegendsapp/static/js/main.8d7087ee.chunk.js"
   },
   {
     "revision": "ff0ab1285788f77c6958",
     "url": "/leagueoflegendsapp/static/js/runtime~main.e672e6bd.js"
+  },
+  {
+    "revision": "424440ed1701fe7c31ed14e32ac01960",
+    "url": "/leagueoflegendsapp/static/media/banner.424440ed.png"
   },
   {
     "revision": "34408a6b8e630358bcf64145a7108318",
