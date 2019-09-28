@@ -10,17 +10,24 @@ class SummonerInfo extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
-      this.setState({
-        iconID: this.props.accountInfo.profileIconId,
-        nickname: this.props.accountInfo.name,
-        level: this.props.accountInfo.summonerLevel,
-      })
+      if(!this.props.accountInfo.status)
+        this.setState({
+          iconID: this.props.accountInfo.profileIconId,
+          nickname: this.props.accountInfo.name,
+          level: this.props.accountInfo.summonerLevel,
+        })
+      else{
+        this.setState({
+          iconID: 1,
+          nickname: 'Not found...',
+          level: '0',
+        })
+      }
     }
   }
 
   render() {
     const {iconID,nickname,level} = this.state
-    console.log('render');
     return (
       <div className="summonerInfo">
         <div className="banner">

@@ -1,9 +1,13 @@
 // My custom fonts
 @import './additions/fonts';
 
+@import 'bootstrap-scss/bootstrap.scss';
+
 // Customs
 @import './additions/customcss';
 
 @import './partilars/MainPage/mainpage';
 @import './partilars/SummonerPage/summonerpage';
 @import './partilars/SummonerPage/components/SummonerInfo';
+@import './partilars/SummonerPage/components/RankInfo';
+@import './partilars/SummonerPage/components/MaestryInfo';

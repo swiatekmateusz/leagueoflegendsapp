@@ -1,0 +1,125 @@
+.rankinfo{
+  background-color: rgba($color: #000000, $alpha: .5);
+  border-radius: .5rem;
+  font-family: 'LOL Medium';
+  color: white;
+  padding-right: .3rem;
+  @include media-breakpoint-down(sm){
+    padding-right: 0;
+  }
+  .ranks{
+    height: 100%;
+    &>div{
+      padding: 0 .3rem;
+      display: flex;
+    }
+    margin: 0;
+    .rankItem{
+      background-color: rgba($color: #000000, $alpha: .5);
+      text-align: center;
+      padding: 1rem 0;
+      margin: .5rem 0;
+      border-radius: .3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      max-width: 100%;
+      h2{
+        font-family: inherit;
+        margin: 0 1rem .2rem 1rem;
+        font-size: 2rem;
+      }
+      img{
+        width: 70%;
+        margin: 0 auto;
+        margin-top: auto;
+        @include media-breakpoint-down(sm){
+          width: 45%;
+        }
+      }
+      @include media-breakpoint-down(sm){
+        width: 100%;
+      }
+      .stats{
+        font-size: 1.2rem;
+        margin: 0 .5rem;
+        border-radius: .5rem;
+        background-color: rgba($color: #000000, $alpha: .5);
+        &::first-letter{
+          font-size: 2rem;
+        }
+        .tier{
+          letter-spacing: 2px;
+          @include media-breakpoint-down(lg){
+
+          }
+        }
+        .rank{
+          font-size: 1.8rem;
+          padding:0 .4rem;
+        }
+        .points{
+          padding-left: .4rem;
+          font-size: 1.5rem;
+        }
+        .unranked{
+          font-style: 2rem;
+        }
+      }
+    }
+  }
+  .wrapper{
+    margin-left: -15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    @include media-breakpoint-down(md){
+margin-left: 0;
+    }
+    .hightchart{
+      padding-top: .5rem;
+      @include media-breakpoint-down(md){
+        
+      }
+      &>div{
+        border-radius: .3rem;
+        &>div{
+          margin: 0 auto
+        }
+      }
+    }
+    .winrate{
+      padding: .55rem 0 .3rem 0;
+      @include media-breakpoint-down(md){
+        padding-bottom: 1rem;
+        width: 88%;
+        margin: 0 auto;
+      }
+      .matchesinfo{
+        border-radius: .3rem;
+        background-color: rgba($color: #000000, $alpha: .5);
+        display: flex;
+        justify-content: space-evenly;
+        text-align: center;
+        height: 100%;
+        .item{
+          margin: .3rem 0;
+          padding: .5rem .3rem .5rem .3rem;
+          border-radius: .3rem;
+          h4{
+            font-size: 1.8rem;
+            margin: 0;
+            border-bottom: 3px solid white;
+          }
+          p{
+            margin: 0;
+            span{
+              font-size: 1.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

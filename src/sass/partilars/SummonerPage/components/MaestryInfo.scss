@@ -1,0 +1,67 @@
+.maestry-container{
+  padding-bottom: 2rem;
+  .maestryinfo{
+    margin: .5rem 0 0 0;
+    border-radius: .3rem;
+    background-color: rgba($color: #000000, $alpha: .5);
+    .select-panel{
+      padding-top:.5rem;
+      .tag-container{
+        background-color: rgba($color: #000000, $alpha: .5);
+        margin: .5rem 2rem;
+        padding: .5rem 1rem;
+        display: flex;
+        justify-content: space-around;
+        .tag{
+          font-size: 1.1rem;
+          text-transform: uppercase;
+          color: white;
+          font-family: 'LOL Medium';
+          padding: .3rem 1.5rem;
+          border-radius: .3rem;
+          background-color: rgba($color: #000000, $alpha: .5);
+          cursor: pointer;
+        }
+        .active{
+          background-color: #251d18;
+        }
+      }
+    }
+    .maestry-items{
+      padding: .5rem 2rem 1rem 2rem;
+      display: flex;
+      justify-content: space-around;
+      .item{
+        position: relative;
+        padding: .5rem .2rem;
+        background-color: rgba($color: #000000, $alpha: .5);
+        border-radius: .3rem;
+        h4{
+          text-align: center;
+          color: white;
+          font-size: 2rem;
+          margin: 0;
+        }
+        img{
+          min-width: 114px;
+          margin: 0 40px;
+        }
+        .square{
+          width: 100px;
+          height: 100px;
+          position: absolute;
+          top: 22%;
+          left: 50%;
+          transform: translateX(-50%);
+          background-size: cover;
+          background-position: center;
+        }
+        .points{
+          font-size: 1.4rem;
+          text-align: center;
+          color: white;
+        }
+      }
+    }
+  }
+}
