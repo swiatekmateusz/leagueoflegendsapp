@@ -1,67 +1,65 @@
-import React,{Component} from 'react';
-import {  } from 'react-router-dom'
+import React, { Component } from 'react';
+import { } from 'react-router-dom'
 import SummonerInfo from './components/SummonerInfo'
 import RankInfo from './components/RankInfo'
 import MaestryInfo from './components/MaestryInfo'
+import axios from 'axios'
 
 class SummonerPage extends Component {
-  state = { 
+  state = {
     accountInfo: "",
     version: "",
+    loaded: false,
   }
 
   getVersion = () => {
-    const xhl = new XMLHttpRequest();
-    xhl.open("GET", "https://cors-anywhere.herokuapp.com/https://ddragon.leagueoflegends.com/api/versions.json");
-    xhl.setRequestHeader("origin", "x-requested-with")
-    xhl.send();
-    xhl.onload = () =>{
-      this.setState({
-        version: JSON.parse(xhl.response)[0],
+    axios.get('https://cors-anywhere.herokuapp.com/https://ddragon.leagueoflegends.com/api/versions.json', { headers: { "origin": "x-requested-with" } })
+      .then(res => {
+        this.setState({
+          version: res.data[0],
+        })
       })
-    }
   }
 
-  componentDidMount(){
-    const {nickname, region} = this.props.match.params
-
+  getAccountInfo = () => {
+    const { nickname, region } = this.props.match.params
     document.title = `${nickname.toUpperCase()} | ${region}`;
-
-    const xhl = new XMLHttpRequest();
-    xhl.open("POST", "https://cors-anywhere.herokuapp.com/https://leagueoflegendsapp.netlify.com/.netlify/functions/getriotapi");
-    xhl.setRequestHeader("Content-Type", "application/json")
-    xhl.setRequestHeader("origin", "x-requested-with")
-    xhl.send(JSON.stringify({
-        "type" : "summoner",
-        "nickname":nickname,
-        "region":region
-    }));
-    xhl.onload = () =>{
-      this.setState({
-        accountInfo: JSON.parse(xhl.response),
-      })
+    const data = {
+      "type": "summoner",
+      "nickname": nickname,
+      "region": region
     }
+    axios.post('https://cors-anywhere.herokuapp.com/https://leagueoflegendsapp.netlify.com/.netlify/functions/getriotapi', data, { headers: { "origin": "x-requested-with", "Content-Type": "application/json" } })
+      .then(res => {
+        this.setState({
+          accountInfo: res.data,
+          loaded: true,
+        })
+      })
+  }
 
+  componentDidMount() {
+    this.getAccountInfo()
     this.getVersion()
   }
 
   render() {
     return (
-    <div className="summonerpage">
-      <div className="container-fluid">
-        <div className="container">
-          <header>
-            <SummonerInfo accountInfo={this.state.accountInfo}/>
-          </header>
-          <section>
-            <RankInfo accountID={this.state.accountInfo.id} region={this.props.match.params.region}/>
-          </section>
-          <section>
-            <MaestryInfo accountID={this.state.accountInfo.id} region={this.props.match.params.region} version={this.state.version}/>
-          </section>
+      <div className="summonerpage">
+        <div className="container-fluid">
+          <div className="container">
+            <header>
+              {this.state.loaded ? <SummonerInfo accountInfo={this.state.accountInfo} /> : null}
+            </header>
+            <section>
+              {this.state.loaded ? <RankInfo accountID={this.state.accountInfo.id} region={this.props.match.params.region} /> : null}
+            </section>
+            <section>
+              {this.state.loaded ? <MaestryInfo accountID={this.state.accountInfo.id} region={this.props.match.params.region} version={this.state.version} /> : null}
+            </section>
+          </div>
         </div>
       </div>
-    </div>
     );
   }
 }
