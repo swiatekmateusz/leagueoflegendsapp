@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import banner from '../../../../sass/additions/img/banner.png'
+import { AccountContext } from '../../../context/AccountContext'
 
-const SummonerInfo = props => {
-  const { profileIconId, name, summonerLevel } = props.accountInfo
+const SummonerInfo = () => {
+  const { profileIconId, name, summonerLevel } = useContext(AccountContext).accountInfo
+
   return (
     <div className="summonerInfo">
       <div className="banner">
