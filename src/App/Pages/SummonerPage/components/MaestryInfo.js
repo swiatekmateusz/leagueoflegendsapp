@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import MaestryItem from './MaestryItem'
 import Panel from './Panel'
 import axios from 'axios'
+import { MaestryContext } from '../../../context/maestryContext/MaestryContext'
 
 class MaestryInfo extends Component {
   state = {

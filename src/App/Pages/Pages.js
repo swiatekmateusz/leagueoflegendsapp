@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import MainPage from './MainPage/MainPage';
 import SummonerPage from './SummonerPage/SummonerPage'
-import AccountContextProvider from '../context/AccountContext'
+import AccountContextProvider from '../context/accountContext/AccountContext'
 
 const Pages = () => {
   return (

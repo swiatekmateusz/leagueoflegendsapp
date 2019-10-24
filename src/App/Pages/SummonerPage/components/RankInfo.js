@@ -1,190 +1,48 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SingleRank from './SingleRank';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import MatchesInfo from './MatchesInfo'
-import axios from 'axios'
+import { RankContext } from '../../../context/rankContext/RankContext'
 
-class RankInfo extends Component {
-  state = {
-    data: false,
-    solo: {
-      queueType: 'Ranked Solo 5vs5',
-      tier: "",
-      rank: "",
-      points: "",
-      miniSeries: "",
-      wins: "",
-      losses: "",
-    },
-    tft: {
-      queueType: 'Ranked TFT',
-      tier: "",
-      rank: "",
-      points: "",
-      miniSeries: "",
-      wins: "",
-      losses: "",
-    },
-    flex: {
-      queueType: 'Ranked Flex 5vs5',
-      tier: "",
-      rank: "",
-      points: "",
-      miniSeries: "",
-      wins: "",
-      losses: "",
-    },
-    chartOptions: {
-      chart: {
-        type: 'column'
-      },
-      title: {
-        text: 'Stats'
-      },
-      xAxis: {
-        categories: ['SOLO', 'TFT', 'FLEX']
-      },
-      yAxis: {
-        allowDecimals: false,
-        min: 0,
-        title: {
-          text: 'matches'
-        }
-      },
-      tooltip: {
-        formatter: function () {
-          return '<b>' + this.x + '</b><br/>' +
-            this.series.name + ': ' + this.y + '<br/>'
-        }
-      },
-      plotOptions: {
-        column: {
-          stacking: 'normal',
-          borderColor: 'none'
-        }
-      },
-      series: [
-        {
-          name: 'Wins',
-          data: [0, 0, 0],
-          stack: 'Wins'
-        }, {
-          name: 'Losses',
-          data: [0, 0, 0],
-          stack: 'Losses'
-        }]
-    }
-  }
-
-  updateSeries = () => {
-    this.setState({
-      chartOptions: {
-        series: [{
-          data: [this.state.solo.wins, this.state.tft.wins, this.state.flex.wins]
-        }, {
-          data: [this.state.solo.lossess, this.state.tft.lossess, this.state.flex.lossess]
-        }]
-      }
-    });
-  }
-
-  setRanks = data => {
-    data.forEach(item => {
-      if (item.queueType === "RANKED_SOLO_5x5") {
-        this.setState({
-          solo: {
-            queueType: 'Ranked Solo 5vs5',
-            tier: item.tier,
-            rank: item.rank,
-            points: item.leaguePoints,
-            miniSeries: item.miniSeries,
-            wins: item.wins,
-            lossess: item.losses
-          },
-        })
-      } else if (item.queueType === "RANKED_TFT") {
-        this.setState({
-          tft: {
-            queueType: 'Ranked TFT',
-            tier: item.tier,
-            rank: item.rank,
-            points: item.leaguePoints,
-            miniSeries: item.miniSeries,
-            wins: item.wins,
-            lossess: item.losses
-          },
-        })
-      } else if (item.queueType === "RANKED_FLEX_SR") {
-        this.setState({
-          flex: {
-            queueType: 'Ranked Flex 5vs5',
-            tier: item.tier,
-            rank: item.rank,
-            points: item.leaguePoints,
-            miniSeries: item.miniSeries,
-            wins: item.wins,
-            lossess: item.losses
-          },
-        })
-      }
-    })
-    this.setState({
-      data: true,
-    })
-  }
-
-  componentDidMount() {
-    const { region, accountID } = this.props
-    const data = {
-      "type": "rank",
-      "region": region,
-      "summonerID": accountID
-    }
-    axios.post('https://cors-anywhere.herokuapp.com/https://leagueoflegendsapp.netlify.com/.netlify/functions/getriotapi', data, { headers: { "origin": "x-requested-with" } })
-      .then(res => {
-        this.setRanks(res.data)
-        this.updateSeries()
-      })
-  }
-
-  render() {
-    const { solo, tft, flex } = this.state
-    return (
-      <div className="rankinfo">
-        <div className="row">
-          <div className="col-lg-8 col-sm-12">
-            <div className="ranks row">
-              <div className="col-md-4">
-                {this.state.data ? <SingleRank rankInfo={solo} /> : null}
-              </div>
-              <div className="col-md-4">
-                {this.state.data ? <SingleRank rankInfo={tft} /> : null}
-              </div>
-              <div className="col-md-4">
-                {this.state.data ? <SingleRank rankInfo={flex} /> : null}
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 col-md-12">
-            <div className="wrapper">
-              {this.state.data ? <div className="hightchart">
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  options={this.state.chartOptions}
-                />
-              </div> : null}
-              {this.state.data ?
-                <div className="winrate">
-                  <MatchesInfo solo={solo} tft={tft} flex={flex} />
+const RankInfo = () => {
+  return (
+    <RankContext.Consumer>
+      {({ data, chartOptions, tft, solo, flex }) => (
+        <div className="rankinfo">
+          <div className="row">
+            <div className="col-lg-8 col-sm-12">
+              <div className="ranks row">
+                <div className="col-md-4">
+                  {data ? <SingleRank rankInfo={solo} /> : null}
                 </div>
-                : null}
+                <div className="col-md-4">
+                  {data ? <SingleRank rankInfo={tft} /> : null}
+                </div>
+                <div className="col-md-4">
+                  {data ? <SingleRank rankInfo={flex} /> : null}
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-4 col-md-12">
+              <div className="wrapper">
+                {data ? <div className="hightchart">
+                  <HighchartsReact
+                    highcharts={Highcharts}
+                    options={chartOptions}
+                  />
+                </div> : null}
+                {data ?
+                  <div className="winrate">
+                    <MatchesInfo solo={solo} tft={tft} flex={flex} />
+                  </div>
+                  : null}
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    );
-  }
+        </div>)}
+    </RankContext.Consumer>
+  );
 }
 export default RankInfo;
 
