@@ -10,7 +10,8 @@ const MaestryContextProvider = props => {
   const initialState = {
     maestryInfo: "",
     maestryDisplay: "",
-    tagDisplay: "All"
+    tagDisplay: "All",
+    version: ""
   }
 
   const [state, dispatch] = useReducer(maestryReducer, initialState)
@@ -25,20 +26,25 @@ const MaestryContextProvider = props => {
     "Tank",
   ]
 
-  const handleTagClick = tagName => {
-    dispatch({ type: "SET_TAG_DISPLAY", data: tagName })
-    setMestryDisplay(tagName)
-  }
-
   const setMestryDisplay = tagname => {
     if (tagname === "All") {
+      console.log(state.maestryInfo.slice(0, 5));
       dispatch({ type: "SET_MAESTRY_DISPLAY", data: state.maestryInfo.slice(0, 5) })
     } else {
       dispatch({ type: "SET_MAESTRY_DISPLAY", data: state.maestryInfo.filter(item => item.tags[0] === tagname || item.tags[1] === tagname).slice(0, 5) })
     }
   }
 
+  const handleTagClick = tagName => {
+    dispatch({ type: "SET_TAG_DISPLAY", data: tagName })
+    setMestryDisplay(tagName)
+  }
+
+
+
   useEffect(() => {
+    dispatch({ type: "SET_VERSION", data: version })
+
     const changeMaestryInfo = allMaestry => {
       let championsInfo = ""
       axios.get(`https://cors-anywhere.herokuapp.com/http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`, { headers: { "origin": "x-requested-with" } })
@@ -55,7 +61,6 @@ const MaestryContextProvider = props => {
             }
           })
           dispatch({ type: "SET_MAESTRY_INFO", data: allMaestry })
-          setMestryDisplay("All")
         })
     }
 
@@ -67,13 +72,25 @@ const MaestryContextProvider = props => {
       }
       axios.post('https://cors-anywhere.herokuapp.com/https://leagueoflegendsapp.netlify.com/.netlify/functions/getriotapi', data, { headers: { "origin": "x-requested-with" } })
         .then(res => {
+          console.log("XD");
           changeMaestryInfo(res.data)
         })
     }
 
     getData()
-  }, []);
+  }, [accountInfo.id, params.region, version]);
 
+  useEffect(() => {
+    const setMestryDisplay = tagname => {
+      if (tagname === "All") {
+        console.log(state.maestryInfo.slice(0, 5));
+        dispatch({ type: "SET_MAESTRY_DISPLAY", data: state.maestryInfo.slice(0, 5) })
+      } else {
+        dispatch({ type: "SET_MAESTRY_DISPLAY", data: state.maestryInfo.filter(item => item.tags[0] === tagname || item.tags[1] === tagname).slice(0, 5) })
+      }
+    }
+    setMestryDisplay("All")
+  }, [state.maestryInfo]);
 
   return (
     <MaestryContext.Provider value={{ ...state, tags, handleTagClick }}>

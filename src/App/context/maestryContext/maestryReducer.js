@@ -6,6 +6,8 @@ export const maestryReducer = (state, action) => {
       return { ...state, maestryDisplay: action.data }
     case 'SET_MAESTRY_INFO':
       return { ...state, maestryInfo: action.data }
+    case 'SET_VERSION':
+      return { ...state, version: action.data }
     default:
       return { ...state }
   }

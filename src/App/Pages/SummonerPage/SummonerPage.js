@@ -9,7 +9,7 @@ import MaestryContextProvider from '../../context/maestryContext/MaestryContext'
 const SummonerPage = () => {
   return (
     <AccountContext.Consumer>
-      {({ accountInfo, version, loaded, params }) => (
+      {({ loaded }) => (
         <div className="summonerpage">
           <div className="container-fluid">
             <div className="container">
@@ -20,7 +20,7 @@ const SummonerPage = () => {
                 {loaded ? <RankContextProvider><RankInfo /></RankContextProvider> : null}
               </section>
               <section>
-                {loaded ? <MaestryContextProvider><MaestryInfo accountID={accountInfo.id} region={params.region} version={version} /></MaestryContextProvider> : null}
+                {loaded ? <MaestryContextProvider><MaestryInfo /></MaestryContextProvider> : null}
               </section>
             </div>
           </div>

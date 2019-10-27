@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MaestryContext } from '../../../context/maestryContext/MaestryContext'
 
-const Panel = props => {
-  const tags = props.tags.map(tag=><div onClick={()=>props.handleTagClick(tag)} key={tag} className={`tag${props.tagDisplay === tag ? " active" : ""}`}>{tag}</div> )
-  return ( 
+const Panel = () => {
+  const { tags, handleTagClick, tagDisplay } = useContext(MaestryContext)
+  const tagsIcons = tags.map(tag => <div onClick={() => handleTagClick(tag)} key={tag} className={`tag${tagDisplay === tag ? " active" : ""}`}>{tag}</div>)
+  return (
     <div className="tag-container">
-      {tags}
+      {tagsIcons}
     </div>
-   );
+  );
 }
- 
+
 export default Panel;
